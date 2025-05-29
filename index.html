@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Shehjadi, Sheuly 🌸 - A Love Story</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌸%3C/text%3E%3C/svg%3E">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --royal-purple: #6a0dad;
+            --soft-gold: #FFD700;
+            --midnight-black: #121212;
+            --starlight-silver: #C0C0C0;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --page-bg: var(--midnight-black);
+
+            --font-heading: 'Cinzel', serif;
+            --font-cursive: 'Great Vibes', cursive;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--page-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Changed to flex-start */
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Page Section Styling */
+        .page-section {
+            display: none; /* Hidden by default */
+            width: 100%;
+            max-width: 900px; 
+            margin: 20px auto;
+            padding: 30px;
+            background-color: rgba(40, 20, 60, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(var(--soft-gold), 0.3);
+            border: 1px solid var(--soft-gold);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--soft-gold);
+            margin-bottom: 1rem;
+        }
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.8em; }
+        h3 { font-size: 1.4em; }
+
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1em;
+            color: var(--starlight-silver);
+        }
+
+        .cursive-text {
+            font-family: var(--font-cursive);
+            font-size: 1.8em;
+            color: var(--soft-gold);
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, var(--royal-purple), var(--soft-gold));
+            color: var(--midnight-black);
+            font-family: var(--font-heading);
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(var(--soft-gold), 0.4);
+            margin-top: 20px;
+            font-size: 1em;
+        }
+
+        .button:hover:not(:disabled) {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(var(--soft-gold), 0.6);
+        }
+        .button:disabled {
+            background: #555;
+            color: #999;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .starry-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background-color: var(--starlight-silver);
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+            box-shadow: 0 0 5px var(--starlight-silver), 0 0 10px var(--starlight-silver);
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .music-player button {
+            background: var(--royal-purple);
+            color: var(--soft-gold);
+            border: 1px solid var(--soft-gold);
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal[style*="display: flex"] { /* Reinforce display flex if set inline */
+            display: flex !important;
+        }
+
+        .modal-content {
+            background-color: var(--midnight-black);
+            color: var(--text-light);
+            margin: auto;
+            padding: 30px;
+            border: 2px solid var(--soft-gold);
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 25px var(--soft-gold);
+            animation: modalOpen 0.4s ease-out;
+        }
+        @keyframes modalOpen {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+
+        .close-button {
+            color: var(--starlight-silver);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--soft-gold);
+        }
+
+        .gate-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            margin-bottom: 20px;
+            perspective: 1000px;
+        }
+        .gate {
+            width: 100px;
+            height: 180px;
+            background-color: #5C4033; /* Dark wood */
+            border: 5px solid #3E2723; /* Darker wood border */
+            transition: transform 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Added easing */
+        }
+        .gate.left { transform-origin: left; }
+        .gate.right { transform-origin: right; }
+        .gate-container.open .gate.left { transform: rotateY(-100deg) translateX(-5px); } /* Slight pull back */
+        .gate-container.open .gate.right { transform: rotateY(100deg) translateX(5px); } /* Slight pull back */
+
+        .crown-animation {
+            font-size: 3em;
+            color: var(--soft-gold);
+            animation: crownDrop 2s ease-out forwards;
+            opacity: 0;
+            animation-delay: 1.5s; /* After gates open */
+        }
+        @keyframes crownDrop {
+            0% { transform: translateY(-100px) rotate(-15deg); opacity: 0; }
+            70% { transform: translateY(10px) rotate(5deg); opacity: 1; }
+            100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        }
+
+        .bracelet-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Increased gap */
+            margin: 30px 0;
+            padding: 10px;
+        }
+        .bead {
+            width: 45px; /* Slightly larger */
+            height: 45px;
+            background: linear-gradient(135deg, var(--starlight-silver), var(--royal-purple));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 1.8em; /* Adjusted for new bead size */
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 10px var(--royal-purple);
+        }
+        .bead:hover {
+            transform: scale(1.15); /* More pronounced hover */
+            box-shadow: 0 0 18px var(--soft-gold);
+        }
+
+        .diary-container {
+            width: 90%;
+            max-width: 600px;
+            height: 450px; /* Slightly taller for more content */
+            perspective: 1500px;
+            margin: 30px auto;
+            position: relative; 
+        }
+        .diary-page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #2a2035; /* Darker purple-ish paper */
+            border: 1px solid var(--soft-gold);
+            border-radius: 5px; /* Slightly rounded page corners */
+            transform-style: preserve-3d;
+            transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1), z-index 0.5s 0.5s; 
+            transform-origin: left center;
+            color: var(--starlight-silver);
+            overflow-y: auto;
+            top: 0; left: 0;
+        }
+        .diary-page.flipped {
+            transform: rotateY(-180deg);
+        }
+        .diary-page .front, .diary-page .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            padding: 25px; /* More padding */
+            box-sizing: border-box;
+            top:0; left:0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .diary-page .back {
+            transform: rotateY(180deg);
+        }
+        .diary-controls { margin-top: 20px; }
+        .diary-controls button { margin: 0 10px; }
+
+        .game-area {
+            width: 100%;
+            min-height: 300px; /* Use min-height */
+            position: relative;
+            border: 2px dashed var(--soft-gold); /* Thicker border */
+            margin-bottom: 20px;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 10px; /* Rounded corners */
+            padding: 10px; /* Padding for stars not to touch edge */
+        }
+        .game-star {
+            position: absolute;
+            font-size: 2.2em; /* Slightly larger stars */
+            color: var(--starlight-silver);
+            cursor: pointer;
+            transition: transform 0.2s, color 0.2s; /* Added color transition */
+        }
+        .game-star:hover {
+            transform: scale(1.3);
+            color: var(--soft-gold);
+        }
+        #gameMessage { min-height: 1.5em; margin-top: 15px;} /* Adjusted spacing */
+
+        .confetti { /* Used in winModal */
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background-color: var(--soft-gold);
+            opacity: 0;
+            animation: fall 3s linear forwards;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-30px) rotate(0deg); opacity: 1;}
+            100% { transform: translateY(150px) rotate(720deg); opacity: 0;} /* Adjusted fall distance for modal */
+        }
+        #confettiContainer { position:absolute; top: 50%; left:0; width:100%; height:1px; overflow:visible; }
+
+
+        .slideshow-container {
+            max-width: 600px;
+            position: relative;
+            margin: auto;
+            border: 2px solid var(--soft-gold);
+            box-shadow: 0 0 15px var(--soft-gold);
+            border-radius: 10px; /* Rounded corners */
+            overflow: hidden; /* To contain rounded corners of images */
+        }
+        .slide {
+            display: none;
+            padding: 10px; /* Reduced padding if image has its own */
+            text-align: center;
+            animation: fadeEffect 1.5s; /* Slower fade */
+        }
+        @keyframes fadeEffect {
+            from {opacity: .3}
+            to {opacity: 1}
+        }
+        .slide img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 8px; /* Rounded image corners */
+            border: 1px solid var(--starlight-silver);
+            object-fit: cover; /* Ensure image covers space nicely */
+        }
+        .slide-caption {
+            margin-top: 15px;
+            font-family: var(--font-cursive);
+            font-size: 1.6em; /* Slightly larger */
+            color: var(--starlight-silver);
+        }
+        .prev, .next {
+          cursor: pointer;
+          position: absolute;
+          top: 50%;
+          width: auto;
+          padding: 16px;
+          margin-top: -25px; /* Adjusted for padding */
+          color: var(--soft-gold);
+          font-weight: bold;
+          font-size: 28px; /* Larger arrows */
+          transition: 0.3s ease;
+          border-radius: 0 5px 5px 0;
+          user-select: none;
+          background-color: rgba(var(--royal-purple), 0.6); /* Slightly more visible */
+          z-index: 10; 
+        }
+        .next {
+          right: 0;
+          border-radius: 5px 0 0 5px;
+        }
+        .prev:hover, .next:hover {
+          background-color: var(--royal-purple);
+        }
+
+        .moonlit-lake {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(to bottom, #0a0f24, #1a237e);
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid var(--royal-purple);
+        }
+        .moon {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            width: 80px;
+            height: 80px;
+            background-color: #f5f3ce;
+            border-radius: 50%;
+            box-shadow: 0 0 30px #f5f3ce, 0 0 50px #f5f3ce inset, 0 0 70px #f5f3ce; /* Enhanced glow */
+            cursor: pointer;
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+        }
+        .moon:hover {
+            transform: scale(1.12) rotate(5deg); /* Slight rotation on hover */
+            box-shadow: 0 0 40px #fffacd, 0 0 60px #fffacd inset, 0 0 90px #fffacd;
+        }
+        
+        .wish-text-area-display { /* New class for displaying Prince's wish */
+            width: 80%;
+            max-width: 500px; /* Wider */
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            border: 1px solid var(--soft-gold);
+            background-color: rgba(40, 20, 60, 0.5); /* Match section bg a bit */
+            color: var(--starlight-silver);
+            font-family: var(--font-body);
+            min-height: 100px; 
+            text-align: left;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        #reflectedWish {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            width: 90%; /* Allow longer wishes to wrap */
+            transform: translateX(-50%) perspective(150px) rotateX(50deg); /* Adjusted perspective */
+            font-size: 1.6em; /* Slightly larger */
+            color: rgba(245, 243, 206, 0.75);
+            text-shadow: 0 0 10px rgba(245, 243, 206, 0.6);
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out; /* Slower transition */
+            font-family: var(--font-cursive);
+            pointer-events: none; /* So it doesn't interfere with clicks */
+        }
+
+        .gift-item {
+            margin: 30px 0; /* More spacing */
+            padding: 20px;
+            border: 1px dashed var(--starlight-silver);
+            border-radius: 10px; /* Rounded corners */
+            background-color: rgba(var(--royal-purple), 0.1); /* Subtle background */
+        }
+        .gift-item img {
+            max-width: 250px; /* Larger images if appropriate */
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid var(--soft-gold);
+        }
+        .gift-item h3 { margin-bottom: 0.75rem; }
+
+
+        #finalSurprisePopup .heart-icon {
+            font-size: 3.5em; /* Larger heart */
+            color: var(--soft-gold);
+            animation: pulse 1.5s infinite;
+            margin: 15px 0;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8;}
+        }
+        
+        /* Ensure placeholder assets directory is clear */
+        /* Create a folder named "assets" in the same directory as this HTML file. */
+        /* Inside "assets", create "images" and "audio" folders. */
+        /* Place your images (e.g., placeholder-moonlit-bench.jpg) in "assets/images/" */
+        /* Place your audio file (e.g., romantic-music.mp3) in "assets/audio/" */
+        /* Update filenames below if yours are different. */
+
+    </style>
+</head>
+<body>
+    <div class="starry-sky"></div>
+
+    <!-- Homepage Section -->
+    <section id="home-page" class="page-section active">
+        <h1>To My Shehjadi, Sheuly 🌸</h1>
+        <p class="cursive-text" id="starName">Her name will appear here with stars...</p>
+        <p style="margin-top: 1.5rem; font-size: 1.2em;">You’re the reason the stars learned to spell your name.</p>
+        <p style="text-align: right; width: 100%; max-width: 450px; margin: 1rem auto 0; font-style: italic; font-family: var(--font-cursive); font-size: 1.5em; color: var(--starlight-silver);">—Prince</p>
+        <button class="button" onclick="showPage('entry-page')">Enter the Kingdom</button>
+    </section>
+
+    <!-- Entry Page Section -->
+    <section id="entry-page" class="page-section">
+        <div class="gate-container" id="gateContainer">
+            <div class="gate left"></div>
+            <div class="gate right"></div>
+        </div>
+        <h2>Once upon a heartbeat, a boy met his moonlight.</h2>
+        <h1 class="crown-animation" id="queenNameEntry">Her name? Sheuly. 👑</h1>
+        <p class="cursive-text">His world hasn’t been the same since.</p>
+        <p>I built this for you. Because the universe made only one like you, and I couldn’t let that magic go unnoticed.</p>
+        <button class="button" onclick="showPage('bracelet-page')">Discover Your Treasures</button>
+    </section>
+
+    <!-- Bracelet Page Section -->
+    <section id="bracelet-page" class="page-section">
+        <h2>Your Bracelet of Moments</h2>
+        <div class="bracelet-display">
+            <div class="bead" data-modal="bead1Modal">😊</div> <!-- Smile icon for first notice -->
+            <div class="bead" data-modal="bead2Modal">🎁</div> <!-- Gift for things you love -->
+            <div class="bead" data-modal="bead3Modal">💖</div> <!-- Heart for what I want for you -->
+            <div class="bead" data-modal="bead4Modal">🌌</div> <!-- Stars for future -->
+        </div>
+        <p>Each charm holds a special memory or something I adore about you. Click them to see!</p>
+        <button class="button" onclick="showPage('letters-page')">Read My Heart's Letters</button>
+    </section>
+
+    <!-- Letters Page Section -->
+    <section id="letters-page" class="page-section">
+        <h2>Midnight Thoughts – Love Letters from the Dark</h2>
+        <p>An elegant black diary opens. Each entry flips like a real page, filled with words penned from the deepest corners of my heart, just for you...</p>
+        <div class="diary-container">
+            <div class="diary-page" id="diaryPage1">
+                <div class="front">
+                    <h3>Entry 1</h3>
+                    <p class="cursive-text">"She wasn’t just beautiful. She was poetry written in fire and moonlight."</p>
+                </div>
+                <div class="back">
+                     <h3>Entry 2</h3>
+                    <p class="cursive-text">"If missing you was music, I’d be a sad violin, playing in the rain."</p>
+                </div>
+            </div>
+            <div class="diary-page" id="diaryPage2">
+                 <div class="front">
+                    <h3>Entry 3</h3>
+                    <p class="cursive-text">"My silence has your name in it. Every pause, every breath... says Sheuly."</p>
+                </div>
+                <div class="back">
+                    <h3>Entry 4</h3>
+                    <p class="cursive-text">"They ask what I’m looking for. I say a voice like hers, a laugh like hers, a soul like... Sheuly."</p>
+                </div>
+            </div>
+        </div>
+        <div class="diary-controls">
+            <button id="prevDiaryPage" class="button">Previous</button>
+            <button id="nextDiaryPage" class="button">Next</button>
+        </div>
+        <button class="button" onclick="showPage('game-page')" style="margin-top: 30px;">Play a Little Game?</button>
+    </section>
+
+    <!-- Game Page Section -->
+    <section id="game-page" class="page-section">
+        <h2>The Little Game – “Find My Heart” ❤️</h2>
+        <p>Click the stars to find Prince’s heart!</p>
+        <div class="game-area" id="gameArea"></div>
+        <p id="gameMessage" class="cursive-text"></p>
+        <button class="button" onclick="showPage('slideshow-page')" id="nextFromGameBtn" style="display:none;">Memory Lane Awaits</button>
+    </section>
+
+    <!-- Slideshow Page Section -->
+    <section id="slideshow-page" class="page-section">
+        <h2>Memory Lane</h2>
+        <div class="slideshow-container">
+            <div class="slide">
+                <!-- Create an image: assets/images/placeholder-moonlit-bench.jpg (e.g. 800x500px) -->
+                <img src="assets/images/placeholder-moonlit-bench.jpg" alt="A moonlit bench">
+                <p class="slide-caption">“Wish we could sit here in silence, and let love speak.”</p>
+            </div>
+            <div class="slide">
+                 <!-- Create an image: assets/images/placeholder-bracelet-s.jpg (e.g. 800x500px) -->
+                <img src="assets/images/placeholder-bracelet-s.jpg" alt="A bracelet with S engraved">
+                <p class="slide-caption">"For your wrist… from my soul."</p>
+            </div>
+            <div class="slide">
+                 <!-- Create an image: assets/images/placeholder-stars-falling.jpg (e.g. 800x500px) -->
+                <img src="assets/images/placeholder-stars-falling.jpg" alt="Two stars falling together">
+                <p class="slide-caption">"Not a coincidence. Just fate."</p>
+            </div>
+            <a class="prev" id="slidePrev">❮</a>
+            <a class="next" id="slideNext">❯</a>
+        </div>
+        <br>
+        <p class="cursive-text" style="font-size: 1.5em;">An image slideshow or animated gallery plays softly, each a whisper of moments dreamt or cherished.</p>
+        <button class="button" onclick="showPage('wish-page')">Make a Wish to the Moon</button>
+    </section>
+
+    <!-- Wish Page Section -->
+    <section id="wish-page" class="page-section">
+        <h2>A Wish to the Moon 🌙</h2>
+        <div class="moonlit-lake">
+            <div class="moon" id="moonElement" title="Click the Moon for a Message"></div>
+            <div id="reflectedWish"></div>
+        </div>
+        <p>A glowing lake under moonlight. See my wish for you appear on the water...</p>
+        <div id="princesWish" class="wish-text-area-display">I wish Sheuly smiles every day, even on days I can't be there. And I’ll be her reason on all the other ones.</div>
+        <button class="button" id="castWishBtn">Cast Wish</button>
+        <p style="margin-top: 25px;">There's a secret chamber for you, Sheuly. The key is the day we celebrate you most. (DDMM)</p>
+        <button class="button" id="enterGiftRoomBtn">Enter Secret Chamber</button>
+    </section>
+
+    <!-- Gift Page Section -->
+    <section id="gift-page" class="page-section">
+        <h2>Welcome, Shehjadi!</h2>
+        <p>A royal reward awaits...</p>
+        <div class="gift-item">
+            <h3>Digital Bracelet with Her Name</h3>
+            <!-- Create an image: assets/images/placeholder-bracelet-sheuly-engraved.png (e.g. 400x300px) -->
+            <img src="assets/images/placeholder-bracelet-s.jpg" alt="Digital Bracelet with Sheuly's name">
+            <p>A design for a bracelet, as unique and beautiful as you. (Her name "Sheuly" engraved)</p>
+        </div>
+        <div class="gift-item">
+            <h3>Downloadable Lock Screen Wallpaper</h3>
+            <!-- Create an image: assets/images/placeholder-lockscreen-prince-heart.png (e.g. phone screen ratio like 9:16, 1080x1920px) -->
+            <img src="assets/images/placeholder-lockscreen-prince-heart.png" alt="Lock Screen Wallpaper: Property of Prince's Heart">
+            <p>“Property of Prince’s Heart 💖”</p>
+            <p><a href="assets/images/placeholder-lockscreen-prince-heart.png" download="Sheuly_Princes_Heart_Wallpaper.png" class="button">Download Wallpaper</a></p>
+        </div>
+        <div class="gift-item">
+            <h3>Your Secret Badge</h3>
+            <div style="font-size: 3em; color: var(--soft-gold); border: 3px solid var(--soft-gold); padding: 15px 20px; display:inline-block; border-radius: 50%; margin-bottom:10px; background: rgba(var(--royal-purple),0.3);">💖</div>
+            <p style="font-family: var(--font-heading); font-size: 1.3em; color:var(--soft-gold);">“You’ve unlocked: Sheuly – My Forever Shehjadi”</p>
+        </div>
+        <button class="button" onclick="showPage('home-page')" style="margin-top: 30px;">Our Story Continues...</button>
+    </section>
+
+    <!-- Modals (Global) -->
+    <div id="bead1Modal" class="modal"> <div class="modal-content"> <span class="close-button" data-modal-id="bead1Modal">×</span> <h3>Charm 1: First Time I Noticed You 😊</h3> <p class="cursive-text" style="font-size:1.5em;">You smiled... and it felt like the world paused. I didn’t know what love was. Now I do. It wears your smile.</p> </div> </div>
+    <div id="bead2Modal" class="modal"> <div class="modal-content"> <span class="close-button" data-modal-id="bead2Modal">×</span> <h3>Charm 2: Things You Love 🎁</h3> <p>Bracelets, Watches, That Little Laugh of Yours...<br>And now this website, I hope.</p> </div> </div>
+    <div id="bead3Modal" class="modal"> <div class="modal-content"> <span class="close-button" data-modal-id="bead3Modal">×</span> <h3>Charm 3: What I Want for You 💖</h3> <p>Peace like quiet oceans.<br>Eyes that never cry alone.<br>A love that fights the world, if needed.</p> </div> </div>
+    <div id="bead4Modal" class="modal"> <div class="modal-content"> <span class="close-button" data-modal-id="bead4Modal">×</span> <h3>Charm 4: Our Future? 🌌</h3> <p>You, holding my hand.<br>Us dancing under the stars.<br>And me whispering, “Still yours” every single night.</p> </div> </div>
+    
+    <div id="winModal" class="modal"> <div class="modal-content"> <span class="close-button" data-modal-id="winModal">×</span> <h3>You Found It!</h3> <p class="cursive-text" style="font-size:1.6em;">...but it was already yours. My heart, my words, my everything—Sheuly. ❤️</p> <div id="confettiContainer"></div> </div> </div>
+    
+    <div id="futureLetterModal" class="modal"> <div class="modal-content"> <span class="close-button" data-modal-id="futureLetterModal">×</span> <h3>A Letter from Future Prince 📩</h3> <p class="cursive-text" style="font-size:1.3em; text-align: left; line-height:1.6;">My Dearest Sheuly,</p> <p style="text-align: left;">Years from now, if we’re under the same stars, know this— I still love you like it’s day one. And if life ever tries to pull us apart, I’ll rewrite destiny just to hold your hand again.</p> <p class="cursive-text" style="font-size:1.3em; text-align: right; margin-top:15px;">Forever yours,<br>Prince.</p> </div> </div>
+    
+    <!-- Music Player (Global) -->
+    <div class="music-player">
+        <!-- Place your audio file here: assets/audio/romantic-music.mp3 -->
+        <audio id="backgroundMusic" src="assets/audio/romantic-music.mp3" loop></audio>
+        <button id="muteButton">Mute 🔇</button>
+    </div>
+    
+    <!-- Final Surprise Modal (Global) -->
+    <div id="finalSurprisePopup" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal-id="finalSurprisePopup">×</span>
+            <h2>Leaving already?</h2>
+            <p>One last thing…</p>
+            <div class="heart-icon">💖</div>
+            <p class="cursive-text" style="font-size:1.6em;">I love you more than yesterday, but not as much as tomorrow. 💌</p>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const allPageSections = document.querySelectorAll('.page-section');
+    let currentPageId = 'home-page'; 
+
+    function showPage(pageId) {
+        allPageSections.forEach(section => {
+            section.classList.remove('active');
+        });
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active');
+            currentPageId = pageId;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Page-specific initializations
+            if (pageId === 'entry-page') {
+                const gateContainer = document.getElementById('gateContainer');
+                if (gateContainer) {
+                    gateContainer.classList.remove('open'); // Reset for re-entry
+                    setTimeout(() => { gateContainer.classList.add('open'); }, 300);
+                }
+                const queenName = document.getElementById('queenNameEntry');
+                if(queenName) { // Re-trigger animation if possible
+                    queenName.style.animation = 'none';
+                    setTimeout(() => queenName.style.animation = '', 10);
+                }
+            } else if (pageId === 'letters-page') {
+                currentDiaryPageIndex = 0;
+                diaryPages.forEach((page, index) => {
+                    page.classList.remove('flipped');
+                    page.style.zIndex = diaryPages.length - index;
+                });
+                if (diaryPages.length > 0) {
+                    diaryPages[0].style.zIndex = diaryPages.length + 1; 
+                }
+                updateDiaryButtons();
+            } else if (pageId === 'game-page') {
+                initializeGame(); 
+            } else if (pageId === 'slideshow-page') {
+                currentSlideIndex = 1;
+                showSlides(currentSlideIndex);
+            }
+        }
+    }
+    window.showPage = showPage;
+
+
+    // --- Starry Sky Animation ---
+    const starrySky = document.querySelector('.starry-sky');
+    if (starrySky) {
+        const numStars = 150; // Increased star count
+        for (let i = 0; i < numStars; i++) {
+            let star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = `${Math.random() * 2.5 + 0.5}px`; // Slightly varied sizes
+            star.style.height = star.style.width;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 2.5}s`;
+            star.style.animationDuration = `${Math.random() * 1.5 + 1.5}s`; // Varied twinkle speed
+            starrySky.appendChild(star);
+        }
+    }
+
+    // --- Music Player ---
+    const music = document.getElementById('backgroundMusic');
+    const muteButton = document.getElementById('muteButton');
+    if (music && muteButton) {
+        let musicPlayed = false;
+        const playMusic = () => {
+            if (!musicPlayed) {
+                music.play().then(() => {
+                    musicPlayed = true;
+                }).catch(error => { 
+                    console.log("Autoplay was prevented. User interaction needed.", error);
+                    // Optional: Show a "Click to play music" button
+                });
+            }
+        };
+        // Try to play on first interaction
+        document.body.addEventListener('click', playMusic, { once: true });
+        document.body.addEventListener('keypress', playMusic, { once: true });
+
+        muteButton.addEventListener('click', () => {
+            if (!musicPlayed) playMusic(); // Try to play if not already
+            music.muted = !music.muted;
+            muteButton.textContent = music.muted ? 'Unmute 🔊' : 'Mute 🔇';
+        });
+    }
+
+    // --- Homepage Star Name Animation ---
+    const starNameElement = document.getElementById('starName');
+    if (starNameElement) {
+        const name = "Sheuly";
+        let revealedName = "";
+        let i = 0;
+        function revealName() {
+            if (i < name.length) {
+                revealedName += name[i];
+                starNameElement.innerHTML = revealedName.padEnd(name.length, '<span style="opacity:0.5;">✨</span>') + (i === name.length -1 ? ' <span style="opacity:1;">🌸</span>' : '');
+                i++;
+                setTimeout(revealName, 400);
+            } else {
+                 starNameElement.innerHTML = name + ' <span style="opacity:1;">🌸</span>';
+            }
+        }
+        setTimeout(revealName, 800);
+    }
+    
+    // --- Modal Handling ---
+    function showModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) modal.style.display = 'flex';
+    }
+    function hideModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) modal.style.display = 'none';
+    }
+    window.showModal = showModal; 
+    window.hideModal = hideModal;
+
+    document.querySelectorAll('.close-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event bubbling to window.onclick
+            hideModal(button.getAttribute('data-modal-id'));
+        });
+    });
+    // Close modal on background click
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', function(event) {
+            if (event.target === this) { // Only if click is on modal backdrop itself
+                 hideModal(this.id);
+            }
+        });
+    });
+
+
+    // --- Bracelet Page Logic ---
+    document.querySelectorAll('#bracelet-page .bead').forEach(bead => {
+        bead.addEventListener('click', () => {
+            const modalId = bead.getAttribute('data-modal');
+            if (modalId) showModal(modalId);
+        });
+    });
+
+    // --- Letters Page (Diary) Logic ---
+    const diaryPages = Array.from(document.querySelectorAll('#letters-page .diary-page'));
+    let currentDiaryPageIndex = 0;
+    const nextDiaryButton = document.getElementById('nextDiaryPage');
+    const prevDiaryButton = document.getElementById('prevDiaryPage');
+
+    function updateDiaryButtons() {
+        if (!prevDiaryButton || !nextDiaryButton) return;
+        prevDiaryButton.disabled = currentDiaryPageIndex === 0;
+        nextDiaryButton.disabled = currentDiaryPageIndex >= diaryPages.length - 1;
+    }
+
+    if (diaryPages.length > 0) {
+        if(nextDiaryButton) nextDiaryButton.addEventListener('click', () => {
+            if (currentDiaryPageIndex < diaryPages.length - 1) {
+                diaryPages[currentDiaryPageIndex].classList.add('flipped');
+                diaryPages[currentDiaryPageIndex].style.zIndex = currentDiaryPageIndex + 1; // Send current back
+                currentDiaryPageIndex++;
+                diaryPages[currentDiaryPageIndex].classList.remove('flipped'); // Ensure next page is front-facing (if it was somehow flipped)
+                diaryPages[currentDiaryPageIndex].style.zIndex = diaryPages.length + 1; // Bring new current to very front
+                updateDiaryButtons();
+            }
+        });
+
+        if(prevDiaryButton) prevDiaryButton.addEventListener('click', () => {
+            if (currentDiaryPageIndex > 0) {
+                diaryPages[currentDiaryPageIndex].style.zIndex = currentDiaryPageIndex + 1; // Send current back before un-flipping prev
+                currentDiaryPageIndex--;
+                diaryPages[currentDiaryPageIndex].classList.remove('flipped');
+                diaryPages[currentDiaryPageIndex].style.zIndex = diaryPages.length + 1; // Bring new current (previous page) to very front
+                updateDiaryButtons();
+            }
+        });
+        updateDiaryButtons(); // Initial state
+    }
+
+    // --- Game Page Logic ---
+    const gameArea = document.getElementById('gameArea');
+    const gameMessageElement = document.getElementById('gameMessage');
+    const nextFromGameBtn = document.getElementById('nextFromGameBtn');
+    const numGameStars = 15;
+    let heartGameIndex;
+
+    function initializeGame() {
+        if (!gameArea || !gameMessageElement || !nextFromGameBtn) return;
+        gameArea.innerHTML = ''; 
+        gameMessageElement.textContent = 'Click the stars!';
+        nextFromGameBtn.style.display = 'none';
+        heartGameIndex = Math.floor(Math.random() * numGameStars);
+
+        for (let i = 0; i < numGameStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('game-star');
+            star.textContent = '✨';
+            star.style.left = `${Math.random() * 90 + 5}%`; // Keep stars within bounds
+            star.style.top = `${Math.random() * 85 + 5}%`;
+            star.style.pointerEvents = 'auto'; 
+            star.style.opacity = '1'; 
+            
+            star.addEventListener('click', () => {
+                if (i === heartGameIndex) {
+                    gameMessageElement.textContent = "You found it!";
+                    star.textContent = '💖';
+                    star.style.color = 'var(--soft-gold)';
+                    star.style.transform = 'scale(1.5)'; // Make heart bigger
+                    triggerConfetti('confettiContainer'); // Use the one in winModal
+                    showModal('winModal');
+                    nextFromGameBtn.style.display = 'inline-block';
+                    document.querySelectorAll('#game-page .game-star').forEach(s => s.style.pointerEvents = 'none');
+                } else {
+                    const wrongMessages = ["Nope! My heart’s not here—but close.", "Almost! My feelings are hiding better than I expected.", "You’ve always had my heart… but can you find it here?", "Not this star... try another one!"];
+                    gameMessageElement.textContent = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];
+                    star.style.opacity = '0.3';
+                    star.style.pointerEvents = 'none'; // Disable clicked wrong stars
+                }
+            });
+            gameArea.appendChild(star);
+        }
+    }
+    
+    function triggerConfetti(containerId) {
+        const confettiContainer = document.getElementById(containerId);
+        if (!confettiContainer) return;
+        confettiContainer.innerHTML = ''; 
+        for (let i = 0; i < 50; i++) { // More confetti
+            const confetto = document.createElement('div');
+            confetto.classList.add('confetti');
+            confetto.style.left = `${Math.random() * 100}%`;
+            const hue = Math.random() * 60 + 200; // Purples, Pinks, Golds
+            confetto.style.backgroundColor = `hsl(${hue}, 100%, 70%)`;
+            confetto.style.animationDelay = `${Math.random() * 0.5}s`;
+            confetto.style.transform = `rotate(${Math.random() * 360}deg)`;
+            confettiContainer.appendChild(confetto);
+            setTimeout(() => confetto.remove(), 3000);
+        }
+    }
+    const winModalCloseBtn = document.querySelector('#winModal .close-button');
+    if(winModalCloseBtn) {
+        winModalCloseBtn.addEventListener('click', () => {
+            if (nextFromGameBtn) nextFromGameBtn.style.display = 'inline-block';
+        });
+    }
+
+    // --- Slideshow Page Logic ---
+    let currentSlideIndex = 1;
+    const slides = document.querySelectorAll("#slideshow-page .slide");
+    const slidePrevBtn = document.getElementById('slidePrev');
+    const slideNextBtn = document.getElementById('slideNext');
+
+    function showSlides(n) {
+        if (slides.length === 0) return;
+        if (n > slides.length) { currentSlideIndex = 1 }
+        if (n < 1) { currentSlideIndex = slides.length }
+        slides.forEach(slide => slide.style.display = "none");
+        slides[currentSlideIndex - 1].style.display = "block";
+    }
+
+    if (slidePrevBtn) slidePrevBtn.onclick = () => showSlides(currentSlideIndex -= 1);
+    if (slideNextBtn) slideNextBtn.onclick = () => showSlides(currentSlideIndex += 1);
+    
+    // --- Wish Page Logic ---
+    const princesWishElement = document.getElementById('princesWish');
+    const reflectedWishElement = document.getElementById('reflectedWish');
+    const moonElement = document.getElementById('moonElement');
+    const castWishBtn = document.getElementById('castWishBtn');
+    const enterGiftRoomBtn = document.getElementById('enterGiftRoomBtn');
+
+    if (castWishBtn && reflectedWishElement && princesWishElement) {
+        castWishBtn.addEventListener('click', () => {
+            reflectedWishElement.textContent = princesWishElement.textContent;
+            reflectedWishElement.style.opacity = '1';
+            setTimeout(() => { reflectedWishElement.style.opacity = '0'; }, 6000); // Longer display
+        });
+    }
+    if (moonElement) moonElement.addEventListener('click', () => showModal('futureLetterModal'));
+    
+    if (enterGiftRoomBtn) enterGiftRoomBtn.addEventListener('click', () => {
+        const code = prompt("Enter Your Birthday code(10/10):");
+        // --- IMPORTANT: Replace '1010' with Sheuly's actual birthday in DDMM format ---
+        if (code === '10/10') { // <<<<<<<  UPDATE THIS CODE!
+            showPage('gift-page'); 
+        } else if (code !== null && code !== "") { // Only alert if they entered something
+            alert("That's not the key to this chamber, my love. Try again!"); 
+        }
+    });
+
+    // --- Final Surprise Popup ---
+    let finalSurpriseShownThisSession = sessionStorage.getItem('finalSurpriseShownThisSession') === 'true';
+    
+    function displayFinalSurprise() {
+        if (!finalSurpriseShownThisSession) {
+            const popup = document.getElementById('finalSurprisePopup');
+            if (popup) popup.style.display = 'flex';
+            sessionStorage.setItem('finalSurpriseShownThisSession', 'true');
+            finalSurpriseShownThisSession = true;
+        }
+    }
+    
+    // Trigger on mouse leaving the viewport upwards (common exit intent)
+    document.addEventListener('mouseout', function(e) {
+        if (e.toElement === null && e.relatedTarget === null && e.clientY < 0) {
+             displayFinalSurprise();
+        }
+    });
+    // Also, a simple fallback if the user tries to close the tab (browser might still show its own dialog)
+    window.addEventListener('beforeunload', function (e) {
+        if (!finalSurpriseShownThisSession) {
+            // Attempt to show it, but browser might block or show its own dialog first
+            displayFinalSurprise(); 
+            // Standard way to prompt user before unload, but custom UI is tricky
+            // e.preventDefault(); // For modern browsers
+            // e.returnValue = 'Wait! One last thing...'; // For older browsers
+            // return 'Wait! One last thing...';
+        }
+    });
+
+    const finalSurpriseCloseBtn = document.querySelector('#finalSurprisePopup .close-button');
+    if (finalSurpriseCloseBtn) {
+        finalSurpriseCloseBtn.addEventListener('click', () => hideModal('finalSurprisePopup'));
+    }
+
+    // Initial page load:
+    showPage('home-page'); 
+
+});
+</script>
+</body>
+</html>
